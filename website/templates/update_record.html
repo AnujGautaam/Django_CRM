@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block content%}
+<h5>this is the updating page</h5>
+
+
+<form method="POST">
+    {%csrf_token%}
+
+    {{form.as_p}}
+
+
+
+
+
+
+<button type="submit" class="btn btn-primary">Update Information</button>
+</form>
+
+
+
+{%endblock%}
+<!-- the next task is to  create a form that  ccan take in all the details -->

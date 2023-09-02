@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <p>welcome to my website, a land where fantasies do come true </p>
+
+    <!-- there has to be a condition applied where if the user has not logged in, the website should tell them to login and if the user has already logged in, it should tell them that login is successful  -->
+<!-- this will contain a block of code to see if everything works or not while signing in and signing out  -->
+
+
+<!-- {%if user.is_authenticated%}
+
+<h1>the user is signed in, thank you</h1>
+{%else%}
+<h4>the user is not signed in, sorry</h4>
+{%endif%} -->
+
+{%if user.is_authenticated%}
+<div>
+  <h4>Following are the people accessing the website</h4>
+
+ 
+
+  {%if records%}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>
+    {%for record in records%}
+    <!-- <ul>
+      <li>{{record.last_name}}</li>
+    </ul> -->
+
+   
+      <tbody>
+        <tr>
+          <th scope="row"><a href="{%url 'records' record.id%}">{{record.id}}</a></th>
+          <td>{{record.last_name}}</td>
+          <td>{{record.email}}</td>
+          <td>{{record.phone}}</td>
+        </tr>
+      </tbody>
+    
+
+        
+    {%endfor%}
+  </table>
+  {%endif%}
+</div>
+
+{%else%}
+<!-- this if and else is not working as intended by the tutor, but i will keep on going -->
+
+<div class="col-md-6 offset-md-3">
+    <h4>Login</h4>
+    <form method="POST" action="{% url 'home' %}">
+        <!-- this form will hold all the details required -->
+        {% csrf_token %}
+        <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">User Name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+              <!-- this is optional but the tutor is trying to put username instead of using the email addresses, so i will also be following along that path for now -->
+            </div>
+            <div class="mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+
+
+    </form>
+
+</div>
+
+{%endif%}
+
+
+
+    {% endblock %}
+</body>
+</html>

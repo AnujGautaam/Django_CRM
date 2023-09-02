@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%block content%}
+<h5>this is the records page and this is amazing</h5>
+<h6> this is where all the logic of the page went and i am proud of what i am doing here</h6>
+
+{{customer_records.last_name}}
+
+
+
+
+
+
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+
+<h3 class="card-title">{{customer_records.last_name}}</h3>
+      <h5 class="card-text">{{customer_records.email}}</h5>
+      <h5 class="card-text">{{customer_records.phone}}</h5>
+      <h5 class="card-text">{{customer_records.state}}</h5>
+      <h5 class="card-text">{{customer_records.address}}</h5>
+      <h5 class="card-text">{{customer_records.zip_code}}</h5>
+
+
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+  <br/>
+
+
+  <a href="{% url 'home' %}">
+
+    <button class="btn btn-primary">Back</button>
+  </a>
+<a href="{% url 'add_record' %}"><button class="btn btn-secondary">Create New</button></a>
+
+  <a href="{%url 'update_record' customer_records.id %}"><button class="btn btn-warning">Update_records</button></a>
+  <a href="{%url 'delete_record' customer_records.id %}"><button class="btn btn-danger">Delete</button></a>
+  <!-- <p>this is the button that i have added here for the purpose of deleting the user </p> -->
+  <!-- this is for the deletion of the customer account and this will be easier to execute for us -->
+<!-- the next task is for the deletion of the records and this will be done in a manner that is the most appropriate for me  -->
+<!-- the next task is for upgrading or else updating the information on the client -->
+  
+{%endblock%}
+
+
+<!-- the final task is for me to write the function for updating the form and this can be easily done with the aid of django functionalities -->
+
+
+

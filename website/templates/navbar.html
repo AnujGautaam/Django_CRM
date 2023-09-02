@@ -1,0 +1,42 @@
+<!-- this is where the navbar from bootstrap goes  -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Django CRM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- this is where i will be testing out the functionalities of logging in and out  -->
+          <!-- the case for loggin in and out is that in the case the user is already loggedin or authenticated, the link should show logout
+          whereas in the case the user is already logged out they should see the login button  -->
+
+          <!-- this is my initial guess on this matter  -->
+          {%if user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{%url 'add_record'%}">Add Record</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{%url 'logout'%}">Logout</a>
+          </li>
+
+          {%else%}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{%url 'register'%}">Register</a>
+          </li>
+         
+          {%endif%}
+         
+         
+         
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%block content%}
+<h4>this is for the addition of records</h4>
+<form method="POST" action="{%url 'add_record'%}">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <button type="submit" class="btn btn-primary">Add New Record</button>
+
+
+
+
+</form>
+{%endblock%}

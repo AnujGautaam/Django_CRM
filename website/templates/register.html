@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4>this is the registration page for the user</h4>
+
+
+<div class="col-md-3 offset-md-3">
+    <!-- this is where the form is to be created -->
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <!-- rest of the portions is for the design of the template itself, next is the definition of the errors that there might be  -->
+
+        {%if forms.errors%}
+        <div class="alert">
+            <h6>there are errors in the forms</h6>
+            {%for field in form %}
+            {%if field.errors%}
+                        {{field.errors}}
+                        {%endif%}
+            {%endfor%}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+        {%endif%}
+
+
+
+
+
+       
+
+
+        <button type="submit" class="btn btn-success">Register Me</button>
+
+
+    </form>
+</div>
+
+
+{% endblock %}
+<!-- this might not seem like anyting new or sophisticated, but the context of the scenario is that these guys are in prions and this is the way by which they could access the internet in their own manner and they were able to figure out the ways of managing the servers  -->
